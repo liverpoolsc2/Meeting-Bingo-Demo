@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background with rounded corners -->
+  <rect width="32" height="32" rx="4" fill="#9333ea"/>
+
+  <!-- 5x5 Bingo Grid -->
+  <!-- Row 1 -->
+  <rect x="3" y="3" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="8.6" y="3" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="14.2" y="3" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="19.8" y="3" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="25.4" y="3" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+
+  <!-- Row 2 -->
+  <rect x="3" y="8.6" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="8.6" y="8.6" width="4.4" height="4.4" rx="0.5" fill="#6366f1"/>
+  <rect x="14.2" y="8.6" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="19.8" y="8.6" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="25.4" y="8.6" width="4.4" height="4.4" rx="0.5" fill="white"/>
+
+  <!-- Row 3 -->
+  <rect x="3" y="14.2" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="8.6" y="14.2" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="14.2" y="14.2" width="4.4" height="4.4" rx="0.5" fill="#6366f1"/>
+  <rect x="19.8" y="14.2" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="25.4" y="14.2" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+
+  <!-- Row 4 -->
+  <rect x="3" y="19.8" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="8.6" y="19.8" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="14.2" y="19.8" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="19.8" y="19.8" width="4.4" height="4.4" rx="0.5" fill="#6366f1"/>
+  <rect x="25.4" y="19.8" width="4.4" height="4.4" rx="0.5" fill="white"/>
+
+  <!-- Row 5 -->
+  <rect x="3" y="25.4" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="8.6" y="25.4" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="14.2" y="25.4" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+  <rect x="19.8" y="25.4" width="4.4" height="4.4" rx="0.5" fill="white"/>
+  <rect x="25.4" y="25.4" width="4.4" height="4.4" rx="0.5" fill="#c4b5fd"/>
+</svg>
