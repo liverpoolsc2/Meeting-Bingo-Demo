@@ -14,15 +14,15 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: cn(
-    'bg-gradient-to-r from-purple-600 to-indigo-600 text-white',
-    'hover:from-purple-500 hover:to-indigo-500',
-    'shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40',
-    'border border-purple-400/20'
+    'bg-gradient-to-r from-brand-blue to-blue-600 text-white',
+    'hover:from-blue-500 hover:to-brand-blue',
+    'shadow-lg shadow-brand-blue/25 hover:shadow-brand-blue/40',
+    'border border-brand-blue/30'
   ),
   secondary: cn(
     'bg-white/10 backdrop-blur-lg text-white',
-    'border border-white/20',
-    'hover:bg-white/20 hover:border-white/30',
+    'border border-white/15',
+    'hover:bg-white/15 hover:border-white/25',
     'shadow-glass-sm hover:shadow-glass'
   ),
   ghost: cn(
@@ -32,15 +32,15 @@ const variantStyles: Record<ButtonVariant, string> = {
   ),
   glass: cn(
     'bg-white/10 backdrop-blur-xl text-white',
-    'border border-white/20',
-    'hover:bg-white/15 hover:border-white/30',
+    'border border-white/15',
+    'hover:bg-white/15 hover:border-white/25',
     'shadow-glass hover:shadow-glass-lg'
   ),
   'glass-glow': cn(
     'bg-white/10 backdrop-blur-xl text-white',
-    'border border-purple-400/30',
-    'hover:bg-white/15 hover:border-purple-400/50',
-    'shadow-glow-purple hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]'
+    'border border-brand-blue/25',
+    'hover:bg-white/15 hover:border-brand-blue/40',
+    'shadow-glow-blue hover:shadow-[0_0_30px_rgba(0,57,255,0.5)]'
   ),
 };
 
@@ -67,7 +67,7 @@ export function Button({
         // Base styles
         'inline-flex items-center justify-center font-medium rounded-xl',
         'transition-all duration-200 ease-out',
-        'focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-2 focus:ring-offset-transparent',
+        'focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 focus:ring-offset-transparent',
         'active:scale-[0.98]',
         // Variant styles
         variantStyles[variant],

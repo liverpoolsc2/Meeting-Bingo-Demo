@@ -37,7 +37,7 @@ export function BingoSquare({
         'aspect-square w-full flex items-center justify-center p-1 sm:p-2',
         'text-xs sm:text-sm font-medium text-center break-words hyphens-auto',
         'rounded-lg transition-all duration-200',
-        'focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-transparent',
+        'focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-1 focus:ring-offset-transparent',
 
         // Empty state (default) - glass effect
         !isFilled && !isFreeSpace && [
@@ -51,18 +51,18 @@ export function BingoSquare({
 
         // Filled state (manual click) - glowing filled
         isFilled && !isFreeSpace && !isAutoFilled && [
-          'bg-gradient-to-br from-purple-500 to-indigo-600',
-          'border border-purple-400/50',
-          'shadow-glow-purple',
+          'bg-gradient-to-br from-brand-blue to-blue-600',
+          'border border-brand-blue/50',
+          'shadow-glow-blue',
           'text-white',
           'cursor-default',
         ],
 
         // Auto-filled state (speech detected) - with shimmer
         isAutoFilled && !isFreeSpace && [
-          'bg-gradient-to-br from-purple-500 to-indigo-600',
-          'border border-purple-400/50',
-          'shadow-glow-purple',
+          'bg-gradient-to-br from-brand-blue to-blue-600',
+          'border border-brand-blue/50',
+          'shadow-glow-blue',
           'text-white',
           'cursor-default',
           'animate-bounce-in',
@@ -72,19 +72,19 @@ export function BingoSquare({
 
         // Free space state
         isFreeSpace && [
-          'bg-gradient-to-br from-cyan-500/40 to-purple-500/40',
-          'border border-cyan-400/30',
-          'shadow-glow-cyan',
+          'bg-gradient-to-br from-brand-mint/30 to-brand-blue/30',
+          'border border-brand-mint/30',
+          'shadow-glow-mint',
           'text-white',
           'cursor-default',
           'font-bold',
         ],
 
-        // Winning square highlight - pulsing glow
+        // Winning square highlight - pulsing glow with lime accent
         isWinningSquare && [
           'animate-glow-pulse',
-          'border-2 border-yellow-400/70',
-          'shadow-[0_0_25px_rgba(250,204,21,0.5)]',
+          'border-2 border-brand-lime/70',
+          'shadow-[0_0_25px_rgba(237,249,37,0.5)]',
         ]
       )}
     >

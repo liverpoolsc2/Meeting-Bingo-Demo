@@ -15,16 +15,16 @@ interface WinScreenProps {
 function CelebrationParticles(): React.ReactElement {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Colorful celebration particles */}
+      {/* Colorful celebration particles - brand colors */}
       {[...Array(20)].map((_, i) => (
         <div
           key={i}
           className={cn(
             'absolute rounded-full animate-particle-float',
-            i % 4 === 0 && 'w-3 h-3 bg-purple-400/60',
-            i % 4 === 1 && 'w-2 h-2 bg-cyan-400/60',
-            i % 4 === 2 && 'w-4 h-4 bg-pink-400/60',
-            i % 4 === 3 && 'w-2 h-2 bg-yellow-400/60'
+            i % 4 === 0 && 'w-3 h-3 bg-brand-blue/50',
+            i % 4 === 1 && 'w-2 h-2 bg-brand-mint/60',
+            i % 4 === 2 && 'w-4 h-4 bg-brand-lime/50',
+            i % 4 === 3 && 'w-2 h-2 bg-brand-cream/60'
           )}
           style={{
             left: `${Math.random() * 100}%`,
@@ -67,9 +67,9 @@ export function WinScreen({
       )}
     >
       {/* Background orbs - celebration colors */}
-      <div className="orb-purple w-[500px] h-[500px] -top-64 -left-64 animate-float-slow opacity-40" />
-      <div className="orb-pink w-96 h-96 -bottom-48 -right-48 animate-float-slow opacity-40" style={{ animationDelay: '1s' }} />
-      <div className="orb-cyan w-80 h-80 top-1/4 right-0 animate-float opacity-30" style={{ animationDelay: '2s' }} />
+      <div className="orb-blue w-[500px] h-[500px] -top-64 -left-64 animate-float-slow opacity-40" />
+      <div className="orb-lime w-96 h-96 -bottom-48 -right-48 animate-float-slow opacity-30" style={{ animationDelay: '1s' }} />
+      <div className="orb-mint w-80 h-80 top-1/4 right-0 animate-float opacity-30" style={{ animationDelay: '2s' }} />
 
       {/* Celebration particles */}
       <CelebrationParticles />
@@ -86,9 +86,9 @@ export function WinScreen({
           <h1
             className={cn(
               'text-6xl sm:text-7xl md:text-8xl font-extrabold',
-              'bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400',
+              'bg-gradient-to-r from-brand-lime via-brand-mint to-brand-blue',
               'bg-clip-text text-transparent',
-              'drop-shadow-[0_0_30px_rgba(236,72,153,0.5)]',
+              'drop-shadow-[0_0_30px_rgba(237,249,37,0.5)]',
               'animate-float'
             )}
           >
@@ -103,7 +103,7 @@ export function WinScreen({
         <div
           className={cn(
             'glass rounded-2xl p-6',
-            'border-purple-400/30 shadow-glow-purple',
+            'border-brand-blue/30 shadow-glow-blue',
             'animate-slide-up'
           )}
           style={{ animationDelay: '0.3s' }}
@@ -111,13 +111,13 @@ export function WinScreen({
           <h2 className="text-lg font-semibold text-white/90 mb-4">Your Stats</h2>
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-2">
-              <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-brand-mint to-brand-blue bg-clip-text text-transparent">
                 {formatDuration(stats.time)}
               </p>
               <p className="text-sm text-white/60">Time to Win</p>
             </div>
             <div className="space-y-2">
-              <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-lime bg-clip-text text-transparent">
                 {stats.wordsDetected}
               </p>
               <p className="text-sm text-white/60">Words Detected</p>

@@ -17,8 +17,8 @@ export function CategorySelect({
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 relative overflow-hidden">
       {/* Background orbs */}
-      <div className="orb-purple w-96 h-96 -top-48 left-1/4 animate-float-slow" />
-      <div className="orb-cyan w-80 h-80 bottom-0 right-1/4 animate-float-slow" style={{ animationDelay: '2s' }} />
+      <div className="orb-blue w-96 h-96 -top-48 left-1/4 animate-float-slow" />
+      <div className="orb-mint w-80 h-80 bottom-0 right-1/4 animate-float-slow" style={{ animationDelay: '2s' }} />
 
       <div className="w-full max-w-4xl mx-auto relative z-10">
         {/* Header */}
@@ -46,7 +46,7 @@ export function CategorySelect({
               className={cn(
                 'p-6',
                 'animate-slide-up opacity-0',
-                'hover:border-purple-400/40',
+                'hover:border-brand-blue/40',
                 'group'
               )}
               style={{
@@ -60,7 +60,7 @@ export function CategorySelect({
                   className={cn(
                     'text-5xl mb-4',
                     'transition-transform duration-300',
-                    'group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]'
+                    'group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(0,57,255,0.5)]'
                   )}
                   role="img"
                   aria-hidden="true"
@@ -83,11 +83,11 @@ export function CategorySelect({
                   className={cn(
                     'inline-flex items-center',
                     'px-4 py-1.5 rounded-full',
-                    'bg-purple-500/20 text-purple-300',
-                    'border border-purple-400/30',
+                    'bg-brand-blue/15 text-brand-mint',
+                    'border border-brand-blue/25',
                     'text-xs font-medium',
                     'transition-all duration-300',
-                    'group-hover:bg-purple-500/30 group-hover:border-purple-400/50'
+                    'group-hover:bg-brand-blue/25 group-hover:border-brand-blue/40'
                   )}
                 >
                   {category.words.length} words

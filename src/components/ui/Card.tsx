@@ -13,22 +13,22 @@ interface CardProps {
 const variantStyles: Record<CardVariant, string> = {
   default: cn(
     'bg-white/10 backdrop-blur-xl',
-    'border border-white/20',
+    'border border-white/15',
     'shadow-glass'
   ),
   glass: cn(
     'bg-white/10 backdrop-blur-xl',
-    'border border-white/20',
+    'border border-white/15',
     'shadow-glass'
   ),
   'glass-glow': cn(
     'bg-white/10 backdrop-blur-xl',
-    'border border-purple-400/30',
-    'shadow-glow-purple'
+    'border border-brand-blue/25',
+    'shadow-glow-blue'
   ),
   'glass-soft': cn(
     'bg-white/5 backdrop-blur-lg',
-    'border border-white/10',
+    'border border-white/8',
     'shadow-glass-sm'
   ),
 };

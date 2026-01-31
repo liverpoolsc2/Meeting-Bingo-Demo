@@ -115,9 +115,9 @@ export function GameControls({
           className={cn(
             'w-full sm:w-auto relative',
             isListening && [
-              'border-pink-400/30',
-              'shadow-pink-500/20',
-              'hover:border-pink-400/50',
+              'border-brand-mint/30',
+              'shadow-[0_0_15px_rgba(190,245,187,0.2)]',
+              'hover:border-brand-mint/50',
             ]
           )}
         >

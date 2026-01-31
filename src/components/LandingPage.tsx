@@ -38,14 +38,14 @@ function DataParticles(): React.ReactElement {
 function GradientOrbs(): React.ReactElement {
   return (
     <>
-      {/* Top-left cyan orb */}
+      {/* Top-left blue orb */}
       <div
-        className="orb-cyan w-96 h-96 -top-48 -left-48 animate-float-slow"
+        className="orb-brand-blue w-96 h-96 -top-48 -left-48 animate-float-slow"
         style={{ animationDelay: '0s' }}
       />
-      {/* Bottom-right bright cyan orb */}
+      {/* Bottom-right mint orb */}
       <div
-        className="orb-cyan-bright w-80 h-80 -bottom-40 -right-40 animate-float-slow"
+        className="orb-brand-mint w-80 h-80 -bottom-40 -right-40 animate-float-slow"
         style={{ animationDelay: '2s' }}
       />
       {/* Center-right blue orb */}
@@ -53,9 +53,9 @@ function GradientOrbs(): React.ReactElement {
         className="orb-blue w-64 h-64 top-1/3 -right-32 animate-float"
         style={{ animationDelay: '1s' }}
       />
-      {/* Additional subtle cyan orb for depth */}
+      {/* Additional subtle lime orb for depth */}
       <div
-        className="orb-cyan w-48 h-48 top-1/4 -left-24 animate-float"
+        className="orb-lime w-48 h-48 top-1/4 -left-24 animate-float"
         style={{ animationDelay: '3s' }}
       />
     </>
@@ -95,11 +95,11 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
       <GradientOrbs />
       <DataParticles />
 
-      {/* Main content card with cyan AI-themed styling */}
+      {/* Main content card with brand AI-themed styling */}
       <div
         className={cn(
           'max-w-md w-full text-center',
-          'glass-cyan rounded-3xl p-8 sm:p-10',
+          'glass-brand rounded-3xl p-8 sm:p-10',
           'animate-float-slow',
           'relative z-10'
         )}
@@ -109,14 +109,14 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
           <h1
             className={cn(
               'text-4xl sm:text-5xl md:text-6xl font-bold',
-              'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500',
+              'bg-gradient-to-r from-brand-blue via-brand-mint to-brand-lime',
               'bg-clip-text text-transparent',
               'animate-slide-down'
             )}
           >
             Meeting Bingo
           </h1>
-          <p className="text-xl sm:text-2xl text-white/80 font-medium animate-fade-in">
+          <p className="text-xl sm:text-2xl text-brand-cream/90 font-medium animate-fade-in">
             Turn boring meetings into fun!
           </p>
 
@@ -127,7 +127,7 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
         </div>
 
         {/* Description */}
-        <div className="space-y-3 text-white/60 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="space-y-3 text-brand-warm/80 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <p className="text-base sm:text-lg">
             Meeting Bingo listens to your meetings and automatically detects
             common buzzwords and phrases.
@@ -144,17 +144,17 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
             size="lg"
             variant="glass-glow"
             onClick={onStart}
-            className="w-full sm:w-auto min-w-[200px] border-cyan-400/30 shadow-glow-cyan hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
+            className="w-full sm:w-auto min-w-[200px] border-brand-blue/30 shadow-glow-blue hover:shadow-[0_0_30px_rgba(0,57,255,0.5)]"
           >
             Start Playing
           </Button>
         </div>
 
-        {/* Decorative shimmer line with cyan tint */}
+        {/* Decorative shimmer line with brand blue tint */}
         <div
           className="absolute bottom-0 left-0 right-0 h-px opacity-50"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(0, 57, 255, 0.4), transparent)',
             backgroundSize: '200% 100%',
             animation: 'shimmer 2s linear infinite',
           }}

@@ -106,11 +106,11 @@ export function TranscriptPanel({
                 key={word}
                 className={cn(
                   'inline-flex items-center px-3 py-1.5',
-                  'bg-gradient-to-r from-purple-500/30 to-indigo-500/30',
-                  'border border-purple-400/30',
-                  'text-white text-sm font-medium',
+                  'bg-gradient-to-r from-brand-blue/25 to-brand-mint/20',
+                  'border border-brand-blue/30',
+                  'text-brand-cream text-sm font-medium',
                   'rounded-full',
-                  'shadow-glow-purple',
+                  'shadow-glow-blue',
                   'animate-scale-in'
                 )}
                 style={{

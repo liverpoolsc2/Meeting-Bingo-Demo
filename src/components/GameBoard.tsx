@@ -85,9 +85,9 @@ export function GameBoard({
       )}
     >
       {/* Background orbs */}
-      <div className="orb-purple w-[400px] h-[400px] -top-48 -left-48 animate-float-slow fixed" />
-      <div className="orb-cyan w-80 h-80 top-1/2 -right-40 animate-float-slow fixed" style={{ animationDelay: '2s' }} />
-      <div className="orb-pink w-64 h-64 bottom-0 left-1/4 animate-float fixed" style={{ animationDelay: '1s' }} />
+      <div className="orb-blue w-[400px] h-[400px] -top-48 -left-48 animate-float-slow fixed" />
+      <div className="orb-mint w-80 h-80 top-1/2 -right-40 animate-float-slow fixed" style={{ animationDelay: '2s' }} />
+      <div className="orb-lime w-64 h-64 bottom-0 left-1/4 animate-float fixed" style={{ animationDelay: '1s' }} />
 
       {/* Content wrapper */}
       <div className="relative z-10 flex flex-col gap-6">

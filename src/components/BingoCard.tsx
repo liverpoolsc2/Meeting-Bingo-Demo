@@ -38,8 +38,8 @@ export function BingoCard({
             className={cn(
               'aspect-square flex items-center justify-center',
               'text-xl sm:text-2xl font-bold',
-              'bg-gradient-to-br from-purple-500/30 to-indigo-500/30',
-              'border border-purple-400/30 rounded-lg',
+              'bg-gradient-to-br from-brand-blue/25 to-brand-mint/20',
+              'border border-brand-blue/25 rounded-lg',
               'text-white',
               'animate-slide-down'
             )}
