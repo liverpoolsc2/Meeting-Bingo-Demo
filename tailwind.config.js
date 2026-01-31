@@ -12,6 +12,12 @@ export default {
           medium: 'rgba(255, 255, 255, 0.15)',
           heavy: 'rgba(255, 255, 255, 0.2)',
         },
+        ai: {
+          dark: '#0a0a0f',
+          blue: '#0ea5e9',
+          cyan: '#22d3ee',
+          violet: '#8b5cf6',
+        },
       },
       animation: {
         'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -28,7 +34,9 @@ export default {
         'typing': 'typing 1.2s ease-in-out infinite',
         'wave': 'wave 1.5s ease-in-out infinite',
         'particle-float': 'particleFloat 4s ease-in-out infinite',
-        'ring-pulse': 'ringPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'ring-pulse': 'ringPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'ai-gradient': 'aiGradientShift 8s ease infinite',
+        'data-stream': 'dataStreamUp 6s linear infinite',
       },
       keyframes: {
         bounceIn: {
@@ -127,10 +135,10 @@ export default {
         },
         wave: {
           '0%, 100%': {
-            transform: 'scaleY(1)',
+            opacity: '0.6',
           },
           '50%': {
-            transform: 'scaleY(1.5)',
+            opacity: '1',
           },
         },
         particleFloat: {
@@ -154,10 +162,34 @@ export default {
         ringPulse: {
           '0%': {
             transform: 'scale(1)',
-            opacity: '0.8',
+            opacity: '0.6',
           },
           '100%': {
-            transform: 'scale(2)',
+            transform: 'scale(1.3)',
+            opacity: '0',
+          },
+        },
+        aiGradientShift: {
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
+        },
+        dataStreamUp: {
+          '0%': {
+            transform: 'translateY(100vh)',
+            opacity: '0',
+          },
+          '10%': {
+            opacity: '1',
+          },
+          '90%': {
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'translateY(-100vh)',
             opacity: '0',
           },
         },
@@ -169,6 +201,7 @@ export default {
         'glow-purple': '0 0 20px rgba(168, 85, 247, 0.4)',
         'glow-cyan': '0 0 20px rgba(34, 211, 238, 0.4)',
         'glow-pink': '0 0 20px rgba(244, 114, 182, 0.4)',
+        'ai-glow': '0 0 30px rgba(14, 165, 233, 0.4)',
       },
       backdropBlur: {
         'glass': '16px',

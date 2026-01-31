@@ -69,12 +69,12 @@ function HomeIcon({ className }: { className?: string }): React.ReactElement {
 function ListeningWaves(): React.ReactElement {
   return (
     <div className="flex items-center gap-0.5 h-4 mr-2">
-      {[0, 1, 2, 3].map((i) => (
+      {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="wave-bar h-3"
+          className="wave-bar h-2.5 opacity-70"
           style={{
-            animationDelay: `${i * 0.15}s`,
+            animationDelay: `${i * 0.2}s`,
           }}
         />
       ))}
@@ -107,14 +107,6 @@ export function GameControls({
       )}
     >
       <div className="relative group">
-        {/* Pulsing rings when listening */}
-        {isListening && (
-          <>
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-ring-pulse" />
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-ring-pulse" style={{ animationDelay: '0.5s' }} />
-          </>
-        )}
-
         <Button
           variant={isListening ? 'glass' : 'glass-glow'}
           size="lg"
@@ -123,9 +115,9 @@ export function GameControls({
           className={cn(
             'w-full sm:w-auto relative',
             isListening && [
-              'border-pink-400/50',
-              'shadow-glow-pink',
-              'hover:border-pink-400/70',
+              'border-pink-400/30',
+              'shadow-pink-500/20',
+              'hover:border-pink-400/50',
             ]
           )}
         >

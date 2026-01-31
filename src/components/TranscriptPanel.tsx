@@ -11,10 +11,10 @@ interface TranscriptPanelProps {
 
 function TypingIndicator(): React.ReactElement {
   return (
-    <div className="inline-flex items-center gap-1 ml-2">
-      <div className="typing-dot" style={{ animationDelay: '0s' }} />
-      <div className="typing-dot" style={{ animationDelay: '0.2s' }} />
-      <div className="typing-dot" style={{ animationDelay: '0.4s' }} />
+    <div className="inline-flex items-center gap-1.5 ml-2">
+      <div className="typing-dot opacity-60" style={{ animationDelay: '0s' }} />
+      <div className="typing-dot opacity-60" style={{ animationDelay: '0.3s' }} />
+      <div className="typing-dot opacity-60" style={{ animationDelay: '0.6s' }} />
     </div>
   );
 }
@@ -45,10 +45,10 @@ export function TranscriptPanel({
       <div className="flex items-center gap-3">
         <div
           className={cn(
-            'w-3 h-3 rounded-full transition-all duration-300',
+            'rounded-full transition-all duration-300',
             isListening
-              ? 'bg-gradient-to-r from-pink-500 to-purple-500 shadow-glow-pink animate-pulse'
-              : 'bg-white/30'
+              ? 'listening-dot'
+              : 'w-2 h-2 bg-white/30'
           )}
           aria-hidden="true"
         />

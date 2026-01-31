@@ -5,24 +5,29 @@ interface LandingPageProps {
   onStart: () => void;
 }
 
-function Particles(): React.ReactElement {
+function DataParticles(): React.ReactElement {
+  // Generate particles that float upward like data streaming to the cloud
+  const particles = [...Array(20)].map((_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2, // 2-6px
+    left: Math.random() * 100,
+    delay: Math.random() * 4,
+    duration: 4 + Math.random() * 3, // 4-7s
+  }));
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Floating particles */}
-      {[...Array(12)].map((_, i) => (
+      {particles.map((particle) => (
         <div
-          key={i}
-          className={cn(
-            'particle',
-            i % 3 === 0 && 'w-3 h-3',
-            i % 3 === 1 && 'w-2 h-2',
-            i % 3 === 2 && 'w-1 h-1'
-          )}
+          key={particle.id}
+          className="data-particle"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${i * 0.3}s`,
-            animationDuration: `${3 + Math.random() * 3}s`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            left: `${particle.left}%`,
+            bottom: '-20px',
+            animationDelay: `${particle.delay}s`,
+            animationDuration: `${particle.duration}s`,
           }}
         />
       ))}
@@ -33,22 +38,52 @@ function Particles(): React.ReactElement {
 function GradientOrbs(): React.ReactElement {
   return (
     <>
-      {/* Top-left purple orb */}
+      {/* Top-left cyan orb */}
       <div
-        className="orb-purple w-96 h-96 -top-48 -left-48 animate-float-slow"
+        className="orb-cyan w-96 h-96 -top-48 -left-48 animate-float-slow"
         style={{ animationDelay: '0s' }}
       />
-      {/* Bottom-right cyan orb */}
+      {/* Bottom-right bright cyan orb */}
       <div
-        className="orb-cyan w-80 h-80 -bottom-40 -right-40 animate-float-slow"
+        className="orb-cyan-bright w-80 h-80 -bottom-40 -right-40 animate-float-slow"
         style={{ animationDelay: '2s' }}
       />
-      {/* Center-right pink orb */}
+      {/* Center-right blue orb */}
       <div
-        className="orb-pink w-64 h-64 top-1/3 -right-32 animate-float"
+        className="orb-blue w-64 h-64 top-1/3 -right-32 animate-float"
         style={{ animationDelay: '1s' }}
       />
+      {/* Additional subtle cyan orb for depth */}
+      <div
+        className="orb-cyan w-48 h-48 top-1/4 -left-24 animate-float"
+        style={{ animationDelay: '3s' }}
+      />
     </>
+  );
+}
+
+function GridOverlay(): React.ReactElement {
+  return <div className="grid-overlay" />;
+}
+
+function AIBadge(): React.ReactElement {
+  return (
+    <div className="ai-badge animate-fade-in" style={{ animationDelay: '0.3s' }}>
+      <svg
+        className="w-3.5 h-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+      Powered by AI
+    </div>
   );
 }
 
@@ -56,24 +91,25 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 relative overflow-hidden">
       {/* Background effects */}
+      <GridOverlay />
       <GradientOrbs />
-      <Particles />
+      <DataParticles />
 
-      {/* Main content card */}
+      {/* Main content card with cyan AI-themed styling */}
       <div
         className={cn(
           'max-w-md w-full text-center',
-          'glass rounded-3xl p-8 sm:p-10',
+          'glass-cyan rounded-3xl p-8 sm:p-10',
           'animate-float-slow',
           'relative z-10'
         )}
       >
         {/* Hero Section */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-6">
           <h1
             className={cn(
               'text-4xl sm:text-5xl md:text-6xl font-bold',
-              'bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400',
+              'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500',
               'bg-clip-text text-transparent',
               'animate-slide-down'
             )}
@@ -83,6 +119,11 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
           <p className="text-xl sm:text-2xl text-white/80 font-medium animate-fade-in">
             Turn boring meetings into fun!
           </p>
+
+          {/* AI Badge */}
+          <div className="flex justify-center pt-2">
+            <AIBadge />
+          </div>
         </div>
 
         {/* Description */}
@@ -103,14 +144,21 @@ export function LandingPage({ onStart }: LandingPageProps): React.ReactElement {
             size="lg"
             variant="glass-glow"
             onClick={onStart}
-            className="w-full sm:w-auto min-w-[200px]"
+            className="w-full sm:w-auto min-w-[200px] border-cyan-400/30 shadow-glow-cyan hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
           >
             Start Playing
           </Button>
         </div>
 
-        {/* Decorative shimmer line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px shimmer opacity-50" />
+        {/* Decorative shimmer line with cyan tint */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-px opacity-50"
+          style={{
+            background: 'linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmer 2s linear infinite',
+          }}
+        />
       </div>
     </div>
   );
