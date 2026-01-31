@@ -26,20 +26,6 @@ function MicrophoneIcon({ className }: { className?: string }): React.ReactEleme
   );
 }
 
-function StopIcon({ className }: { className?: string }): React.ReactElement {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="6" y="6" width="12" height="12" rx="2" />
-    </svg>
-  );
-}
-
 function ShuffleIcon({ className }: { className?: string }): React.ReactElement {
   return (
     <svg
@@ -80,6 +66,22 @@ function HomeIcon({ className }: { className?: string }): React.ReactElement {
   );
 }
 
+function ListeningWaves(): React.ReactElement {
+  return (
+    <div className="flex items-center gap-0.5 h-4 mr-2">
+      {[0, 1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="wave-bar h-3"
+          style={{
+            animationDelay: `${i * 0.15}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function GameControls({
   isListening,
   isSupported,
@@ -100,23 +102,36 @@ export function GameControls({
     <div
       className={cn(
         'flex flex-col gap-3',
-        'sm:flex-row sm:items-center sm:justify-center sm:gap-4'
+        'sm:flex-row sm:items-center sm:justify-center sm:gap-4',
+        'animate-slide-down'
       )}
     >
       <div className="relative group">
+        {/* Pulsing rings when listening */}
+        {isListening && (
+          <>
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-ring-pulse" />
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-ring-pulse" style={{ animationDelay: '0.5s' }} />
+          </>
+        )}
+
         <Button
-          variant={isListening ? 'secondary' : 'primary'}
+          variant={isListening ? 'glass' : 'glass-glow'}
           size="lg"
           disabled={!isSupported}
           onClick={handleListeningToggle}
           className={cn(
-            'w-full sm:w-auto',
-            isListening && 'border-red-300 text-red-600 hover:bg-red-50'
+            'w-full sm:w-auto relative',
+            isListening && [
+              'border-pink-400/50',
+              'shadow-glow-pink',
+              'hover:border-pink-400/70',
+            ]
           )}
         >
           {isListening ? (
             <>
-              <StopIcon className="w-5 h-5 mr-2" />
+              <ListeningWaves />
               Stop Listening
             </>
           ) : (
@@ -126,13 +141,17 @@ export function GameControls({
             </>
           )}
         </Button>
+
+        {/* Tooltip for unsupported browsers */}
         {!isSupported && (
           <div
             className={cn(
               'absolute bottom-full left-1/2 -translate-x-1/2 mb-2',
-              'px-3 py-2 text-sm text-white bg-gray-900 rounded-lg',
+              'px-4 py-2 text-sm',
+              'glass rounded-lg',
+              'text-white/90',
               'opacity-0 group-hover:opacity-100 transition-opacity duration-200',
-              'pointer-events-none whitespace-nowrap z-10'
+              'pointer-events-none whitespace-nowrap z-20'
             )}
             role="tooltip"
           >
@@ -140,7 +159,7 @@ export function GameControls({
             <div
               className={cn(
                 'absolute top-full left-1/2 -translate-x-1/2',
-                'border-4 border-transparent border-t-gray-900'
+                'border-4 border-transparent border-t-white/20'
               )}
             />
           </div>

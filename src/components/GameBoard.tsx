@@ -77,67 +77,78 @@ export function GameBoard({
   return (
     <div
       className={cn(
+        'min-h-screen',
         'flex flex-col gap-6',
         'w-full max-w-6xl mx-auto',
-        'p-4 sm:p-6'
+        'p-4 sm:p-6',
+        'relative overflow-hidden'
       )}
     >
-      {/* Game Controls - Top */}
-      <div className="w-full">
-        <GameControls
-          isListening={speech.isListening}
-          isSupported={speech.isSupported}
-          onStartListening={handleStartListening}
-          onStopListening={handleStopListening}
-          onNewCard={handleNewCard}
-          onGoHome={onGoHome}
-        />
-      </div>
+      {/* Background orbs */}
+      <div className="orb-purple w-[400px] h-[400px] -top-48 -left-48 animate-float-slow fixed" />
+      <div className="orb-cyan w-80 h-80 top-1/2 -right-40 animate-float-slow fixed" style={{ animationDelay: '2s' }} />
+      <div className="orb-pink w-64 h-64 bottom-0 left-1/4 animate-float fixed" style={{ animationDelay: '1s' }} />
 
-      {/* Main content area - responsive two-column layout */}
-      <div
-        className={cn(
-          'grid gap-6',
-          'grid-cols-1 lg:grid-cols-2',
-          'items-start'
-        )}
-      >
-        {/* Bingo Card - Left on desktop, top on mobile */}
-        <div className="w-full flex justify-center">
-          {game.card && (
-            <BingoCard
-              card={game.card}
-              winningSquares={winningSquares}
-              onSquareClick={game.toggleSquare}
-            />
-          )}
-        </div>
-
-        {/* Transcript Panel - Right on desktop, bottom on mobile */}
+      {/* Content wrapper */}
+      <div className="relative z-10 flex flex-col gap-6">
+        {/* Game Controls - Top */}
         <div className="w-full">
-          <TranscriptPanel
+          <GameControls
             isListening={speech.isListening}
-            transcript={speech.transcript}
-            interimTranscript={speech.interimTranscript}
-            detectedWords={game.detectedWords}
+            isSupported={speech.isSupported}
+            onStartListening={handleStartListening}
+            onStopListening={handleStopListening}
+            onNewCard={handleNewCard}
+            onGoHome={onGoHome}
           />
         </div>
-      </div>
 
-      {/* Error display */}
-      {speech.error && (
+        {/* Main content area - responsive two-column layout */}
         <div
           className={cn(
-            'p-4 rounded-lg',
-            'bg-red-50 border border-red-200',
-            'text-red-700 text-sm'
+            'grid gap-6',
+            'grid-cols-1 lg:grid-cols-2',
+            'items-start'
           )}
-          role="alert"
         >
-          <p className="font-medium">Speech Recognition Error</p>
-          <p>{speech.error}</p>
+          {/* Bingo Card - Left on desktop, top on mobile */}
+          <div className="w-full flex justify-center">
+            {game.card && (
+              <BingoCard
+                card={game.card}
+                winningSquares={winningSquares}
+                onSquareClick={game.toggleSquare}
+              />
+            )}
+          </div>
+
+          {/* Transcript Panel - Right on desktop, bottom on mobile */}
+          <div className="w-full">
+            <TranscriptPanel
+              isListening={speech.isListening}
+              transcript={speech.transcript}
+              interimTranscript={speech.interimTranscript}
+              detectedWords={game.detectedWords}
+            />
+          </div>
         </div>
-      )}
+
+        {/* Error display */}
+        {speech.error && (
+          <div
+            className={cn(
+              'p-4 rounded-xl',
+              'glass border-red-400/30',
+              'text-white',
+              'animate-slide-up'
+            )}
+            role="alert"
+          >
+            <p className="font-medium text-red-300">Speech Recognition Error</p>
+            <p className="text-white/70 text-sm mt-1">{speech.error}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

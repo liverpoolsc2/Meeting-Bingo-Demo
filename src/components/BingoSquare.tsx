@@ -36,50 +36,66 @@ export function BingoSquare({
         // Base styles
         'aspect-square w-full flex items-center justify-center p-1 sm:p-2',
         'text-xs sm:text-sm font-medium text-center break-words hyphens-auto',
-        'border rounded-lg transition-all duration-200',
-        'focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-1',
+        'rounded-lg transition-all duration-200',
+        'focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-transparent',
 
-        // Empty state (default)
+        // Empty state (default) - glass effect
         !isFilled && !isFreeSpace && [
-          'bg-white border-gray-200',
-          'hover:bg-gray-50 hover:border-gray-300 cursor-pointer',
-          'text-gray-700',
+          'bg-white/5 backdrop-blur-sm',
+          'border border-white/10',
+          'hover:bg-white/10 hover:border-white/20',
+          'hover:shadow-glass-sm',
+          'text-white/80',
+          'cursor-pointer',
         ],
 
-        // Filled state (manual click)
+        // Filled state (manual click) - glowing filled
         isFilled && !isFreeSpace && !isAutoFilled && [
-          'bg-gradient-to-br from-purple-600 to-indigo-600',
-          'border-purple-700 text-white',
-          'shadow-md cursor-default',
+          'bg-gradient-to-br from-purple-500 to-indigo-600',
+          'border border-purple-400/50',
+          'shadow-glow-purple',
+          'text-white',
+          'cursor-default',
         ],
 
-        // Auto-filled state (speech detected)
+        // Auto-filled state (speech detected) - with shimmer
         isAutoFilled && !isFreeSpace && [
-          'bg-gradient-to-br from-purple-600 to-indigo-600',
-          'border-purple-700 text-white',
-          'shadow-md cursor-default',
+          'bg-gradient-to-br from-purple-500 to-indigo-600',
+          'border border-purple-400/50',
+          'shadow-glow-purple',
+          'text-white',
+          'cursor-default',
           'animate-bounce-in',
+          // Shimmer overlay effect
+          'relative overflow-hidden',
         ],
 
         // Free space state
         isFreeSpace && [
-          'bg-gradient-to-br from-indigo-500 to-purple-500',
-          'border-indigo-600 text-white',
-          'shadow-sm cursor-default',
+          'bg-gradient-to-br from-cyan-500/40 to-purple-500/40',
+          'border border-cyan-400/30',
+          'shadow-glow-cyan',
+          'text-white',
+          'cursor-default',
           'font-bold',
         ],
 
-        // Winning square highlight
+        // Winning square highlight - pulsing glow
         isWinningSquare && [
-          'ring-2 ring-yellow-400 ring-offset-2',
-          'animate-pulse-fast',
-          'shadow-lg shadow-yellow-400/50',
+          'animate-glow-pulse',
+          'border-2 border-yellow-400/70',
+          'shadow-[0_0_25px_rgba(250,204,21,0.5)]',
         ]
       )}
     >
-      <span className="leading-tight line-clamp-3">
+      <span className="leading-tight line-clamp-3 relative z-10">
         {displayText}
       </span>
+
+      {/* Shimmer effect overlay for auto-filled squares */}
+      {isAutoFilled && !isFreeSpace && (
+        <div className="absolute inset-0 shimmer rounded-lg" />
+      )}
     </button>
   );
 }

@@ -9,6 +9,16 @@ interface TranscriptPanelProps {
   detectedWords: string[];
 }
 
+function TypingIndicator(): React.ReactElement {
+  return (
+    <div className="inline-flex items-center gap-1 ml-2">
+      <div className="typing-dot" style={{ animationDelay: '0s' }} />
+      <div className="typing-dot" style={{ animationDelay: '0.2s' }} />
+      <div className="typing-dot" style={{ animationDelay: '0.4s' }} />
+    </div>
+  );
+}
+
 /**
  * Live transcript display panel that shows speech-to-text output
  * and highlights detected bingo words.
@@ -30,20 +40,27 @@ export function TranscriptPanel({
   const showEmptyState = !isListening && !hasContent;
 
   return (
-    <Card className="p-4 flex flex-col gap-4">
+    <Card variant="glass" className="p-5 flex flex-col gap-4 animate-scale-in">
       {/* Header with listening indicator */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <div
           className={cn(
-            'w-3 h-3 rounded-full',
+            'w-3 h-3 rounded-full transition-all duration-300',
             isListening
-              ? 'bg-red-500 animate-pulse'
-              : 'bg-gray-300'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 shadow-glow-pink animate-pulse'
+              : 'bg-white/30'
           )}
           aria-hidden="true"
         />
-        <h2 className="text-lg font-semibold text-gray-800">
-          {isListening ? 'Listening...' : 'Transcript'}
+        <h2 className="text-lg font-semibold text-white">
+          {isListening ? (
+            <span className="flex items-center">
+              Listening
+              <TypingIndicator />
+            </span>
+          ) : (
+            'Transcript'
+          )}
         </h2>
       </div>
 
@@ -51,23 +68,24 @@ export function TranscriptPanel({
       <div
         className={cn(
           'min-h-[120px] max-h-[200px] overflow-y-auto',
-          'rounded-lg border border-gray-200 bg-gray-50 p-3',
-          'text-sm leading-relaxed'
+          'glass-soft rounded-xl p-4',
+          'text-sm leading-relaxed',
+          'scrollbar-glass'
         )}
         aria-live="polite"
         aria-label="Speech transcript"
       >
         {showEmptyState ? (
-          <p className="text-gray-400 italic">
+          <p className="text-white/40 italic">
             Start listening to see the transcript here...
           </p>
         ) : (
           <>
             {transcript && (
-              <span className="text-gray-700">{transcript}</span>
+              <span className="text-white/90">{transcript}</span>
             )}
             {interimTranscript && (
-              <span className="text-gray-400 italic">
+              <span className="text-white/50 italic">
                 {transcript ? ' ' : ''}{interimTranscript}
               </span>
             )}
@@ -77,27 +95,33 @@ export function TranscriptPanel({
       </div>
 
       {/* Detected words section */}
-      <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-gray-600">
+      <div className="flex flex-col gap-3">
+        <h3 className="text-sm font-medium text-white/60">
           Detected Words
         </h3>
-        <div className="flex flex-wrap gap-2 min-h-[32px]">
+        <div className="flex flex-wrap gap-2 min-h-[36px]">
           {detectedWords.length > 0 ? (
-            detectedWords.map((word) => (
+            detectedWords.map((word, index) => (
               <span
                 key={word}
                 className={cn(
-                  'inline-flex items-center px-3 py-1',
-                  'bg-gradient-to-r from-purple-600 to-indigo-600',
+                  'inline-flex items-center px-3 py-1.5',
+                  'bg-gradient-to-r from-purple-500/30 to-indigo-500/30',
+                  'border border-purple-400/30',
                   'text-white text-sm font-medium',
-                  'rounded-full shadow-sm'
+                  'rounded-full',
+                  'shadow-glow-purple',
+                  'animate-scale-in'
                 )}
+                style={{
+                  animationDelay: `${index * 0.05}s`,
+                }}
               >
                 {word}
               </span>
             ))
           ) : (
-            <p className="text-gray-400 text-sm italic">
+            <p className="text-white/40 text-sm italic">
               No words detected yet
             </p>
           )}
